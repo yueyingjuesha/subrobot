@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "@google-cloud/translate": "^6.3.1",
+    "matroska-subtitles": "^3.3.2",
     "zero-fill": "^2.2.4"
   }
 }
