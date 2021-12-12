@@ -52,6 +52,7 @@ class BatchTextTranslator {
 
         const requestTextArray = []
         batchTasks.map((task) => {
+            task.sub.text = task.sub.text.replace(/[\r\n]+/g, " ")
             requestTextArray.push(task.sub.text)
         })
 
@@ -61,7 +62,7 @@ class BatchTextTranslator {
                 const {index, track, sub} = batchTasks[i]
                 track.file.write(`${index}\r\n`)
                 track.file.write(`${this.msToTime(sub.time)} --> ${this.msToTime(sub.time + sub.duration)}\r\n`)
-                console.log(`${sub.text.replace(/[\r\n]+/g, " ")} --> ${translations[i].replace(/[\r\n]+/g, " ")}`)
+                console.log(`${sub.text} --> ${translations[i].replace(/[\r\n]+/g, " ")}`)
                 track.file.write(`${translations[i]}\r\n`)
                 track.file.write(`${sub.text}\r\n\r\n`)
             }
