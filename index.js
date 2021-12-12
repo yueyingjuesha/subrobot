@@ -1,5 +1,5 @@
 const z = require('zero-fill')
-const MatroskaSubtitles = require('matroska-subtitles')
+const {SubtitleParser} = require('matroska-subtitles')
 const {Translate} = require('@google-cloud/translate').v2;
 const FS = require('fs')
 const Path = require('path')
@@ -89,7 +89,7 @@ class MkvSubtitleExtractor {
             let designatedTrackNumber = -1
 
             const tracks = new Map()
-            const subs = new MatroskaSubtitles()
+            const subs = new SubtitleParser()
 
             const dir = outputDir || Path.dirname(mkvPath)
             const name = Path.basename(mkvPath, Path.extname(mkvPath))
